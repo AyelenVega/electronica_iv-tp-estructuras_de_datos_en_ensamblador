@@ -31,8 +31,10 @@ mueveMemoria:
     bhi copia_derecha_a_izquierda        //direccion de destino mayor a la de origen
 
     copia_izquierda_a_derecha:  
-            ldrb r3, [r1], #1       
-            strb r3, [r0], #1       
+            ldrb r3, [r1]       
+            strb r3, [r0]
+            add r1,#1
+            add r0,#1      
             subs r2, r2, #1        
             bne copia_izquierda_a_derecha      
             b fin
@@ -41,8 +43,10 @@ mueveMemoria:
             add r4,r1,r2
             add r5,r0,r2
             bucle:
-                ldrb r3,[r4],#-1     
-                strb r3,[r5],#-1    
+                ldrb r3,[r4]    
+                strb r3,[r5]  
+                sub r4,#1
+                sub r5,#1 
                 subs r2, r2, #1        
                 bne bucle     
             b fin            

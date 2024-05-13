@@ -27,8 +27,10 @@ comparaMemoria:
     */
 
     bucle_comparacion:
-        ldrb r3, [r0], #1  
-        ldrb r4, [r1], #1  
+        ldrb r3, [r0]  
+        ldrb r4, [r1]
+        add r0,#1
+        add r1,#1  
         cmp r3, r4         
         blo izquierda_menor 
         bhi izquierda_mayor 
