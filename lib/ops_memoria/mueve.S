@@ -38,10 +38,13 @@ mueveMemoria:
             b fin
 
     copia_derecha_a_izquierda:
-            ldrb r3, [r1],#-1     
-            strb r3, [r0],#-1    
-            subs r2, r2, #1        
-            bne copia_derecha_a_izquierda      
+            add r4,r1,r2
+            add r5,r0,r2
+            bucle:
+                ldrb r3,[r4],#-1     
+                strb r3,[r5],#-1    
+                subs r2, r2, #1        
+                bne bucle     
             b fin            
     fin:
         bx lr    
