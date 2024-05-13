@@ -18,7 +18,29 @@
 
     .type comparaMemoria, %function
     .global comparaMemoria
+
 comparaMemoria:
-    mov r0,#0
+    /* 
+    r0 = dirección base de la primera region (izquierda)
+    r1 = dirección base de la segunda region (derecha)
+    r2 = tamaño de las regiones
+    */
+
+    bucle_comparacion:
+        ldrb r3, [r0], #1  
+        ldrb r4, [r1], #1  
+        cmp r3, r4         
+        blo izquierda_menor 
+        bhi izquierda_mayor 
+        subs r2, r2, #1    
+        bne bucle_comparacion 
+
+    movs r0, #0
     bx lr
-    .size comparaMemoria, . - comparaMemoria
+
+    izquierda_menor:
+        movs r0, #-1
+        bx lr
+    izquierda_mayor:
+        movs r0, #1
+        bx lr    
