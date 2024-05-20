@@ -24,7 +24,7 @@ mueveMemoria:
     r1 = puntero a base de la región de origen
     r2 = tamaño de las regiones
     */
-
+    push {r4,lr}
     cmp r0, r1 
     beq fin                             
     blo copia_izquierda_a_derecha        //direccion de destino menor a la de origen
@@ -41,14 +41,14 @@ mueveMemoria:
 
     copia_derecha_a_izquierda:
             add r4,r1,r2
-            add r5,r0,r2
+            add r12, r0,r2
             bucle:
-                ldrb r3,[r4]    
-                strb r3,[r5]  
                 sub r4,#1
-                sub r5,#1 
+                sub r12,#1 
+                ldrb r3,[r4]    
+                strb r3,[r12]  
                 subs r2, r2, #1        
                 bne bucle     
             b fin            
     fin:
-        bx lr    
+    pop {r4,pc}   

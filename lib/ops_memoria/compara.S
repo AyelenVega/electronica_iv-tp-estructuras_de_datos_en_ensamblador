@@ -25,24 +25,25 @@ comparaMemoria:
     r1 = dirección base de la segunda region (derecha)
     r2 = tamaño de las regiones
     */
-
     bucle_comparacion:
         ldrb r3, [r0]  
-        ldrb r4, [r1]
+        ldrb r12, [r1]
         add r0,#1
         add r1,#1  
-        cmp r3, r4         
+        cmp r3,r12         
         blo izquierda_menor 
         bhi izquierda_mayor 
         subs r2, r2, #1    
         bne bucle_comparacion 
 
     movs r0, #0
-    bx lr
+    b fin
 
     izquierda_menor:
         movs r0, #-1
-        bx lr
+        b fin
     izquierda_mayor:
         movs r0, #1
-        bx lr    
+        b fin    
+    fin:
+        bx lr
