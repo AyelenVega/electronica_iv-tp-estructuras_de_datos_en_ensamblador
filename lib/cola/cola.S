@@ -80,21 +80,21 @@ defun Cola_pone
     beq 2f 
 
     0:  
-        cmp R3,R4    // Comparo puntero de escritura con puntero lectura
+        cmp R3,R4    
         beq 3f
         str R3,[R0,#Cola_escritura]
         mov R0,#0
         b fin
 
     1:  
-        mov R0,#-1  // Si la cola esta llena devuelvo -1
+        mov R0,#-1  
         b fin
 
     2: 
-        mov R3,R5   //Si el puntero de esctritura llego al limite, lo muevo a la base
-        b 0b        //vuelvo para comparar pEscritura y pLectura
+        mov R3,R5   
+        b 0b        
 
-    3:   //Si pEscritura y pLectura son iguales, significa que la cola esta llena
+    3:  
         mov R12, #1             
         str R12,[R0,#Cola_llena]
         str R3,[R0,#Cola_escritura]
