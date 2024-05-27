@@ -159,6 +159,7 @@ defun Cola_quita
     2:
         mov R4,R5
         str R4,[R0,#Cola_lectura]
+        mov R0,#0
         b salida
 
 
