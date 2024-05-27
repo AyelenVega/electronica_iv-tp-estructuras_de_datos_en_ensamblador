@@ -131,7 +131,7 @@ defun Cola_quita
     1- Si Cola_llena=1, hago Cola_llena=0. En caso de que Cola_llena = 0, me fijo si la cola estaba vacia. Si estaba vacia devuelvo -1, sino hago los siguientes pasos
     2- Copio el valor
     3- Muevo el puntero
-    4- Me fijo si estoy en el limite, en caso de estarlo, muevo pLectura a la base
+    4- Me fijo si estoy en el limite, en caso de estarlo, muevo Lectura a la base
 
     */
 
